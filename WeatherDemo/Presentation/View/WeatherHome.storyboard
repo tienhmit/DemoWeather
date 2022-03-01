@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Tx-dq-8vC">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather Home View Controller-->
+        <scene sceneID="Inr-tW-AzZ">
+            <objects>
+                <viewController id="9Tx-dq-8vC" customClass="WeatherHomeViewController" customModule="WeatherDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EL7-9z-qLd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Location" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPK-me-QMs">
+                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hdx-bO-8OZ"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="webSearch" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="address-level2"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9Tx-dq-8vC" id="JVi-gl-i28"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" indicatorStyle="white" bouncesZoom="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eYI-Fn-0qh">
+                                <rect key="frame" x="5" y="119" width="404" height="733"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Tx-dq-8vC" id="8ug-B9-qJM"/>
+                                    <outlet property="delegate" destination="9Tx-dq-8vC" id="OWR-oI-7iv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fI9-gr-B20" firstAttribute="trailing" secondItem="eYI-Fn-0qh" secondAttribute="trailing" constant="5" id="Eu7-aJ-AqQ"/>
+                            <constraint firstItem="OPK-me-QMs" firstAttribute="top" secondItem="fI9-gr-B20" secondAttribute="top" constant="20" id="TmT-9L-Aho"/>
+                            <constraint firstItem="fI9-gr-B20" firstAttribute="bottom" secondItem="eYI-Fn-0qh" secondAttribute="bottom" constant="10" id="aX5-Zo-nQY"/>
+                            <constraint firstItem="eYI-Fn-0qh" firstAttribute="top" secondItem="OPK-me-QMs" secondAttribute="bottom" constant="5" id="aiC-FC-fsq"/>
+                            <constraint firstItem="OPK-me-QMs" firstAttribute="trailing" secondItem="fI9-gr-B20" secondAttribute="trailing" id="kgg-VQ-cc5"/>
+                            <constraint firstItem="OPK-me-QMs" firstAttribute="leading" secondItem="fI9-gr-B20" secondAttribute="leading" id="krp-pf-XKW"/>
+                            <constraint firstItem="eYI-Fn-0qh" firstAttribute="leading" secondItem="fI9-gr-B20" secondAttribute="leading" constant="5" id="n00-Et-bGy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fI9-gr-B20"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="OPK-me-QMs" id="GA0-6e-kCC"/>
+                        <outlet property="tableView" destination="eYI-Fn-0qh" id="1DQ-SB-7mu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTq-kL-hIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="110.49107142857143"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="8fF-03-SUR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="PDz-8a-j7b" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYX-QV-IHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-682" y="149"/>
+        </scene>
+    </scenes>
+</document>
