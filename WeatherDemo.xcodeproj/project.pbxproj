@@ -187,7 +187,6 @@
 			children = (
 				EC360AED27CD2261009FC69A /* DataAccess */,
 				EC360AD427CD2261009FC69A /* DomainModel */,
-				EC360AD327CD2261009FC69A /* Extension */,
 				EC360AE127CD2261009FC69A /* Presentation */,
 				EC360AA027CD21F9009FC69A /* AppDelegate.swift */,
 				EC360AA227CD21F9009FC69A /* SceneDelegate.swift */,
@@ -218,13 +217,6 @@
 				EC360AC727CD21FB009FC69A /* Info.plist */,
 			);
 			path = WeatherDemoUITests;
-			sourceTree = "<group>";
-		};
-		EC360AD327CD2261009FC69A /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		EC360AD427CD2261009FC69A /* DomainModel */ = {
@@ -308,7 +300,6 @@
 				EC360AEE27CD2261009FC69A /* Repository */,
 				EC360AF027CD2261009FC69A /* AppUserDefault */,
 				EC360AF227CD2261009FC69A /* Fetcher */,
-				EC360AF427CD2261009FC69A /* CoreData */,
 			);
 			path = DataAccess;
 			sourceTree = "<group>";
@@ -338,27 +329,12 @@
 			path = Fetcher;
 			sourceTree = "<group>";
 		};
-		EC360AF427CD2261009FC69A /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		EC360B1C27CD3672009FC69A /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
 				EC360B3A27CD5241009FC69A /* Repository */,
-				EC360B1D27CD3683009FC69A /* Dummy */,
 			);
 			path = DataAccess;
-			sourceTree = "<group>";
-		};
-		EC360B1D27CD3683009FC69A /* Dummy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Dummy;
 			sourceTree = "<group>";
 		};
 		EC360B3A27CD5241009FC69A /* Repository */ = {
