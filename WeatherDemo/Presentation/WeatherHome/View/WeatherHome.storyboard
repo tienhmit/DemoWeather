@@ -49,16 +49,17 @@
                     <connections>
                         <outlet property="searchBar" destination="OPK-me-QMs" id="GA0-6e-kCC"/>
                         <outlet property="tableView" destination="eYI-Fn-0qh" id="1DQ-SB-7mu"/>
+                        <segue destination="PDz-8a-j7b" kind="presentation" identifier="DetailSegue" modalPresentationStyle="fullScreen" id="L65-z7-CH1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTq-kL-hIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="110.49107142857143"/>
         </scene>
-        <!--Detail-->
+        <!--DetailViewController-->
         <scene sceneID="8fF-03-SUR">
             <objects>
-                <viewControllerPlaceholder storyboardName="Detail" id="PDz-8a-j7b" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="DetailViewController" storyboardName="Detail" referencedIdentifier="DetailViewController" id="PDz-8a-j7b" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYX-QV-IHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-682" y="149"/>
