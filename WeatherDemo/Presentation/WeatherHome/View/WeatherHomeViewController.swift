@@ -23,7 +23,7 @@ class WeatherHomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        presenter.fetchCityLocationModel(locationName: "Hanoi")
+        presenter.fetchFavourite()
     }
     
 
@@ -53,17 +53,26 @@ extension WeatherHomeViewController {
     }
 }
 
+private extension WeatherHomeViewController {
+    private func addFavouriteSwipeAction(cityLocationModel: CityLocationModel) {
+        presenter.addFavouriteAction(cityLocationModel: cityLocationModel)
+    }
+
+    private func deleteFavouriteSwipeAction(at index: Int) {
+        presenter.deleteFavouriteAction(at: index)
+        reloadView()
+    }
+}
+
 //MARK: - UITableViewDataSource
 extension WeatherHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.cityLocationModels.count
+        presenter.infos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let info = (presenter.cityLocationModels[indexPath.row],
-                    presenter.wetherModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: weatherHomeCellIdentifier) as! WeatherHomeCell
-        cell.setup(info: info)
+        cell.setup(info: presenter.infos[indexPath.row])
         return cell
     }
     
@@ -89,9 +98,35 @@ extension WeatherHomeViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension WeatherHomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let info = (presenter.cityLocationModels[indexPath.row],
-                    presenter.wetherModel)
+        let info = presenter.infos[indexPath.row]
         performSegue(withIdentifier: "DetailSegue", sender: info)
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let title = isSearchLocation ? "Add" : "Delete"
+        let action = UIContextualAction(style: .normal,
+                                        title: title) { [weak self] (action, view, completionHandler) in
+                                            guard let strongSelf = self else { return }
+                                            strongSelf.isSearchLocation ?
+                                                strongSelf.addFavouriteSwipeAction(cityLocationModel: strongSelf.presenter.infos[indexPath.row].0) :
+                                                strongSelf.deleteFavouriteSwipeAction(at: indexPath.row)
+                                            completionHandler(true)
+        }
+        action.backgroundColor = isSearchLocation ? #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1) : .red
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if isSearchLocation {
+            return .insert
+        } else {
+            return .delete
+        }
     }
 }
 
@@ -107,7 +142,7 @@ extension WeatherHomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             isSearchLocation = false
-            presenter.fetchCityLocationModel(locationName: "Hanoi")
+            presenter.fetchFavourite()
         } else {
             isSearchLocation = true
             presenter.fetchCityLocationModel(locationName: searchText)

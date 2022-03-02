@@ -9,15 +9,15 @@
 import Foundation
 
 class AppUserDefault: NSObject {
-    private static let isAddedCityLocationCoreDataKey = "isAddedCityLocationCoreDataKey"
+    private static let isAddedFavouriteKey = "isAddedFavouriteKey"
     
-    class func setIsDummyCityLocation() {
+    class func setIsAddedFavourite() {
         let userDefault = UserDefaults.standard
-        userDefault.set(true, forKey: isAddedCityLocationCoreDataKey)
+        userDefault.set(true, forKey: isAddedFavouriteKey)
         userDefault.synchronize()
     }
     
-    class func isAddedCityLocationCoreData() -> Bool {
-        UserDefaults.standard.bool(forKey: isAddedCityLocationCoreDataKey)
+    class func isAddedFavourite() -> Bool {
+        UserDefaults.standard.bool(forKey: isAddedFavouriteKey)
     }
 }

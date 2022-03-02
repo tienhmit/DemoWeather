@@ -24,6 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        if !AppUserDefault.isAddedFavourite() {
+            do {
+                try BaseCoreData().delete(modelType: CityLocationModel.self)
+            } catch {
+                
+            }
+        }
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
