@@ -6,7 +6,7 @@
 //  Copyright © 2022 Hoang Manh Tien. All rights reserved.
 //
 
-struct CityLocationModel: Codable {
+struct CityLocationModel: DomainModel, Codable {
     let name: String
     let latitude: Double
     let longitude: Double
@@ -25,4 +25,9 @@ struct CityLocationModel: Codable {
         case longitude = "lon"
         case country = "country"
     }
+}
+
+enum CityLocationModelCoreDataConditionType {
+    case one(Double, Double)
+    case all
 }

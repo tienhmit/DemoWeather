@@ -7,8 +7,13 @@
 //
 
 protocol CityLocationUseCaseInterface {
+    // API Interface
     func fetch(locationName: String,
                complete: @escaping ([CityLocationModel]) -> Void)
+    // CoreData Interface
+    func insert(models: [CityLocationModel])
+    func fetch(coreDataConditions: CoreDataConditions) -> [CityLocationModel]
+    func delete(models: [CityLocationModel])
 }
 
 final class CityLocationUseCase {
@@ -20,8 +25,35 @@ final class CityLocationUseCase {
 }
 
 extension CityLocationUseCase: CityLocationUseCaseInterface {
+    // API Interface
     func fetch(locationName: String,
                complete: @escaping ([CityLocationModel]) -> Void) {
-        cityLocationRepository.fetch(localtionName: locationName, complete: complete)
+        cityLocationRepository.fetch(locationName: locationName, complete: complete)
+    }
+    
+    // CoreData Interface
+    func insert(models: [CityLocationModel]) {
+        do {
+            try cityLocationRepository.insert(models: models)
+        } catch {
+            // Error
+        }
+    }
+    
+    func fetch(coreDataConditions: CoreDataConditions) -> [CityLocationModel] {
+        do {
+            return try cityLocationRepository.fetch(coreDataConditions: coreDataConditions)
+        } catch {
+            // Error
+            return []
+        }
+    }
+    
+    func delete(models: [CityLocationModel]) {
+        do {
+            return try cityLocationRepository.delete(models: models)
+        } catch {
+            // Error
+        }
     }
 }

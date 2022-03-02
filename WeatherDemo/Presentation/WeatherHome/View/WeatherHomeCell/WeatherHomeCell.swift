@@ -21,6 +21,6 @@ class WeatherHomeCell: UITableViewCell {
     func setup(info: (CityLocationModel, WeatherModel)) {
         locationNameLabel.text = info.0.name
         countryLabel.text = info.0.country
-        locationTemperatureLabel.text = "\(info.1.windInfoModel.speed) m/s"
+        locationTemperatureLabel.text = String(format: "%.1f m/s", info.1.windInfoModel.speed)
     }
 }
