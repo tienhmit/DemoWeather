@@ -59,7 +59,7 @@ extension WeatherRequestConditionsType: RequestConditions {
         case let .byLocation(latitude, longitude):
             return ["lat": latitude,
                     "lon": longitude,
-                    "appid": "4d1a1b39868241cfc34a0c7c8f1186e6"]
+                    "appid": "08869d29f8e15af55cd59f0a6127b31f"]
         }
     }
     
