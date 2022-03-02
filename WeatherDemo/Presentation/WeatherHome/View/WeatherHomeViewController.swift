@@ -11,7 +11,7 @@ import UIKit
 class WeatherHomeViewController: BaseViewController {
     
     //MARK: - Properties
-    private let presenter = WeatherHomePresenter.sheared
+    private let presenter = WeatherHomePresenter()
     private var isSearchLocation = false
     private let weatherHomeCellIdentifier = "WeatherHomeCell"
     
@@ -30,6 +30,16 @@ class WeatherHomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "DetailSegue":
+            guard let destination = segue.destination as? DetailViewController else { return }
+            destination.setUp(info: sender as! (CityLocationModel, WeatherModel))
+        default:
+            break
+        }
     }
 }
 
@@ -79,7 +89,9 @@ extension WeatherHomeViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension WeatherHomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        let info = (presenter.cityLocationModels[indexPath.row],
+                    presenter.wetherModel)
+        performSegue(withIdentifier: "DetailSegue", sender: info)
     }
 }
 

@@ -14,13 +14,12 @@ protocol WeatherHomeDelegate {
 
 class WeatherHomePresenter: NSObject {
     var delegate: WeatherHomeDelegate? = nil
-    static let sheared = WeatherHomePresenter()
     private let cityLocationUseCase: CityLocationUseCaseInterface
     private let weatherUseCase: WeatherUseCaseInterface
     var cityLocationModels = [CityLocationModel]()
     var wetherModel = WeatherModel()
     
-    private init(cityLocationUseCase: CityLocationUseCaseInterface = CityLocationUseCase(),
+    init(cityLocationUseCase: CityLocationUseCaseInterface = CityLocationUseCase(),
                  weatherUseCase: WeatherUseCaseInterface = WeatherUseCase()) {
         self.cityLocationUseCase = cityLocationUseCase
         self.weatherUseCase = weatherUseCase

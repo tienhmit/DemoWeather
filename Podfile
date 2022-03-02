@@ -6,7 +6,6 @@ target 'WeatherDemo' do
   use_frameworks!
 
   # Pods for WeatherDemo
-  pod 'SwiftyJSON'
   pod 'AlamofireSwiftyJSON'
 
   target 'WeatherDemoTests' do
